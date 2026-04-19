@@ -10,13 +10,19 @@
     You must also update add a background, such as a color, gradient, or image.
     Any further styling is up to you!
     */
-    --primary-color: ##f30707;
+    --primary-color: #ffffff;
     --primary-background: rgb(26, 27, 27);
+
 }
 
+body {
+    background-color: lightblue;
+  }
+  
 #header {
     font-size: 3rem;
     color: var(--primary-color);
+    
 }
 
 form {
@@ -66,20 +72,6 @@ button:hover {
     list-style: none;
 }
 
-.todo-div {
-    margin: 1rem;
-    display: flex;
-    padding: 0.25em 0.5em;
-    border-radius: 30px;
-    color: var(--primary-color);
-    background-color: var(--primary-background);
-}
-
-.todo-div li{
-    padding: 7px;
-    font-size: 20px;
-    flex: 1;
-}
 
 .check-btn, .delete-btn {
     font-size: 17px;
@@ -102,3 +94,58 @@ button:hover {
 .remove {
     opacity: 0;
 }
+
+.checked {
+    animation: pop 0.3s ease;
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .todo-list li {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    border-radius: 30px;
+    color: var(--primary-color);
+    background-color: var(--primary-background);
+    gap: 10px;
+  }
+  
+  .todo-list li span {
+    transition: all 0.3s ease;
+    flex: 1; 
+  }
+
+  .todo-list li input:checked + span {
+    text-decoration: line-through;
+    color: gray;
+    animation: pop 0.3s ease;
+  }
+
+  .todo-list li input:checked {
+    transform: scale(1.2);
+  }
+
+  .remove {
+    animation: fall 0.6s forwards ease;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(200px) rotate(15deg);
+      opacity: 0;
+    }
+  }
